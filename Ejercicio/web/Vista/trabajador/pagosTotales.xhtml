@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <h:form>
+            <h:commandButton action="#{trabajadorController.calcularSueldosTotales()}" value="Traer Datos y Calcular"/>
+        </h:form>
+        <h:dataTable value="#{trabajadorController.getTrabajadores()}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Trabajador"/>
+                </f:facet>
+                <h:outputText value="#{item.nombreCompleto}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="#{bundle.ListTrabajadorTitle_sueldo}"/>
+                </f:facet>
+                <h:outputText value="#{item.sueldo}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Bono"/>
+                </f:facet>
+                <h:outputText value="#{item.idDepartamento.getBono()}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Sueldo Total"/>
+                </f:facet>
+                <h:outputText value="#{item.sueldoTotal}"/>
+            </h:column>
+        </h:dataTable>
+    </body>
+</html>
